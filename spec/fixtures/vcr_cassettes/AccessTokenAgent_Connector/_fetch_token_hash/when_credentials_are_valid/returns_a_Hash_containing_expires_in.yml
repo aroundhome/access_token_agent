@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://test_app:303b8f4ee401c7a0c756bd3acc549a16ba1ee9b194339c2e2a858574dff3a949@localhost:8012/oauth/token
+    uri: http://localhost:8012/oauth/token
     body:
       encoding: US-ASCII
       string: grant_type=client_credentials
@@ -51,6 +51,6 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"access_token":"6c8ca820662ab58086de897d59ff4686a144cb977d4efbc30c6743a9f35938e2","token_type":"bearer","expires_in":7200,"created_at":1460709239}'
-    http_version: 
+    http_version:
   recorded_at: Fri, 15 Apr 2016 08:33:59 GMT
 recorded_with: VCR 3.0.1

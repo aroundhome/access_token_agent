@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://test_app:157a94675f95@localhost:8012/oauth/token
+    uri: http://localhost:8012/oauth/token
     body:
       encoding: US-ASCII
       string: grant_type=client_credentials
@@ -55,6 +55,6 @@ http_interactions:
       string: '{"error":"invalid_client","error_description":"Client authentication
         failed due to unknown client, no client authentication included, or unsupported
         authentication method."}'
-    http_version: 
+    http_version:
   recorded_at: Mon, 18 Apr 2016 14:26:04 GMT
 recorded_with: VCR 3.0.1

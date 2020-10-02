@@ -1,0 +1,54 @@
+image: ruby:2.7
+
+stages:
+  - test
+  - publish
+
+before_script:
+  - bundle config jobs 8
+  - bundle install --path=/tmp/bundler --quiet
+
+rubocop:
+  stage: test
+  image: ruby:2.2
+  script:
+    - bundle exec rubocop
+
+rspec_latest:
+  stage: test
+  image: ruby
+  script:
+    - bundle exec rspec
+
+rspec_2.6:
+  stage: test
+  image: ruby:2.6
+  script:
+    - bundle exec rspec
+
+rspec_2.5:
+  stage: test
+  image: ruby:2.5
+  script:
+    - bundle exec rspec
+
+rspec_2.2:
+  stage: test
+  image: ruby:2.2
+  script:
+    - bundle exec rspec
+
+publish_gem:
+  stage: publish
+  script:
+    - mkdir -p ~/.gem
+    - |
+      cat << EOF > ~/.gem/credentials
+      ---
+      :rubygems_api_key: ${RUBYGEMS_API_KEY}
+      EOF
+    - chmod 0600 ~/.gem/credentials
+    - gem build access_token_agent.gemspec
+    - gem push $(find `pwd` -name "access_token_agent-*.gem")
+  only:
+    - master
