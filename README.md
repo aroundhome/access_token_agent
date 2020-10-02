@@ -37,6 +37,8 @@ Optional parameters:
 * `access_token_path` - Allows to customize the HTTP path where the
   access token needs to be requested.
   **Default:** `/oauth/token`
+* `scopes` - An array of scopes to be requested from the authorization server
+  **Default:** no scopes
 
 ### Example
 

@@ -12,12 +12,14 @@ module AccessTokenAgent
                    client_id:,
                    client_secret:,
                    fake_auth: false,
-                   access_token_path: '/oauth/token')
+                   access_token_path: '/oauth/token',
+                   scopes: nil)
       @host = host
       @client_id = client_id
       @client_secret = client_secret
       @fake_auth = fake_auth
       @access_token_path = access_token_path
+      @scopes = scopes
     end
 
     def http_auth_header
@@ -58,7 +60,7 @@ module AccessTokenAgent
     def perform_request
       request = Net::HTTP::Post.new(auth_uri)
       request.basic_auth @client_id, @client_secret
-      request.form_data = { 'grant_type' => 'client_credentials' }
+      request.form_data = form_data
       use_tls = auth_uri.scheme == 'https'
       Net::HTTP.start(auth_uri.hostname,
                       auth_uri.port,
@@ -69,6 +71,12 @@ module AccessTokenAgent
 
     def auth_uri
       @auth_uri ||= URI("#{@host}#{@access_token_path}")
+    end
+
+    def form_data
+      result = { 'grant_type' => 'client_credentials' }
+      result['scope'] = @scopes.join(' ') if @scopes
+      result
     end
   end
 end
