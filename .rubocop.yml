@@ -20,6 +20,16 @@ Metrics/BlockLength:
     - 'config/environments/*.rb' # instead of excluding all :configure methods
     - 'config/routes.rb'
 
+# The maximum amount of positional arguments in a method really shouldn't exceed
+# the rubocop default of 5.
+# However, keyword arguments do not make a method signature as unreadable as positional
+# arguments. There are valid cases for longer argument lists (e.g. data objects or
+# DSLs with implicit default values).
+# In those cases keyword args provide a good balance between readability and the need to
+# pass more arguments into an object.
+Metrics/ParameterLists:
+  CountKeywordArgs: false
+
 Style/Documentation:
   Enabled: false
 

@@ -1,6 +1,7 @@
-## master
+## 3.5.0
 
-*no unreleased changes*
+- Support requesting scopes
+- Add requirement for Ruby 2.2 to gemspec (this was an implicit requirement before)
 
 ## 3.4.0
 

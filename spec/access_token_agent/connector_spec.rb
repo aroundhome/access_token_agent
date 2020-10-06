@@ -4,10 +4,11 @@ require 'shared_examples_for_access_token_agent'
 describe AccessTokenAgent::Connector do
   let(:host) { 'http://localhost:8012' }
   let(:options) do
-    { host: host,
+    {
+      host: host,
       client_id: 'test_app',
-      client_secret: '303b8f4ee401c7a0c756bd3acc549a16ba1ee9b194339c2' \
-                     'e2a858574dff3a949' }
+      client_secret: 'something secret'
+    }
   end
   let(:agent) { described_class.new(options) }
 
@@ -156,12 +157,27 @@ describe AccessTokenAgent::Connector do
 
     before do
       allow(Net::HTTP).to receive(:start)
+      allow(Net::HTTP::Post).to receive(:new).and_return(request_mock)
     end
 
     it 'calls the expected URL' do
       expected_uri = URI("#{host}/oauth/token")
-      expect(Net::HTTP::Post)
-        .to receive(:new).with(expected_uri).and_return(request_mock)
+      expect(Net::HTTP::Post).to receive(:new).with(expected_uri)
+      subject
+    end
+
+    it 'specifies the correct grant type' do
+      expect(request_mock)
+        .to receive(:form_data=)
+        .with(hash_including('grant_type' => 'client_credentials'))
+      subject
+    end
+
+    it 'does not pass any scopes' do
+      expect(request_mock).to receive(:form_data=) do |form_hash|
+        expect(form_hash.keys).not_to include('scope')
+      end
+
       subject
     end
 
@@ -173,8 +189,27 @@ describe AccessTokenAgent::Connector do
 
       it 'calls the expected URL' do
         expected_uri = URI("#{host}#{custom_path}")
-        expect(Net::HTTP::Post)
-          .to receive(:new).with(expected_uri).and_return(request_mock)
+        expect(Net::HTTP::Post).to receive(:new).with(expected_uri)
+        subject
+      end
+    end
+
+    context 'when using scopes' do
+      let(:scopes) { ['scope-a', 'scope-b'] }
+      let(:options) do
+        {
+          host: host,
+          client_id: 'test_app',
+          client_secret: 'something secret',
+          scopes: scopes
+        }
+      end
+
+      it 'passes expected scopes' do
+        expect(request_mock)
+          .to receive(:form_data=)
+          .with(hash_including('scope' => 'scope-a scope-b'))
+
         subject
       end
     end
