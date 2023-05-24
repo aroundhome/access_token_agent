@@ -1,3 +1,7 @@
+## 3.5.1 (2023-05-24)
+
+- Publish gem to the new gem server
+
 ## 3.5.0
 
 - Support requesting scopes

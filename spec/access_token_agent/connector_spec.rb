@@ -10,7 +10,7 @@ describe AccessTokenAgent::Connector do
       client_secret: 'something secret'
     }
   end
-  let(:agent) { described_class.new(options) }
+  let(:agent) { described_class.new(**options) }
 
   describe '.token' do
     subject { agent.token }
