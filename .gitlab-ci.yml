@@ -44,4 +44,4 @@ publish_gem:
     - gem build -o release.gem
     - gem push --host https://rubygems.aroundhome-services.de/private release.gem
   only:
-    - master
+    - main
