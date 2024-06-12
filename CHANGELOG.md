@@ -1,3 +1,7 @@
+## 3.5.2 (2024-06-12)
+
+- Use the new default branch (`main`, replacing `master`) in the publish job.
+
 ## 3.5.1 (2023-05-24)
 
 - Publish gem to the new gem server
