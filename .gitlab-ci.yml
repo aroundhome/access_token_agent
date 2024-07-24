@@ -41,7 +41,7 @@ rspec_2.2:
 publish_gem:
   stage: publish
   script:
-    - gem build -o release.gem
-    - gem push --host https://rubygems.aroundhome-services.de/private release.gem
+    - gem build access_token_agent.gemspec
+    - gem push $(find `pwd` -name "access_token_agent-*.gem")
   only:
     - main

@@ -18,10 +18,6 @@ Gem::Specification.new do |s|
 
   s.required_ruby_version = '>= 2.2'
 
-  if s.respond_to?(:metadata)
-    s.metadata['allowed_push_host'] = 'https://rubygems.aroundhome-services.de'
-  end
-
   s.add_development_dependency 'bundler', '> 1.11', '< 3'
   s.add_development_dependency 'pry', '~> 0.10'
   s.add_development_dependency 'rspec', '~> 3.4'
