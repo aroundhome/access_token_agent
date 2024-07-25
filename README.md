@@ -63,21 +63,21 @@ AccessTokenAgent::Connector.instance = AccessTokenAgent::Connector.new(...)
 ## Usage
 
 Set up an AcccessTokenAgent::Connector instance (see Configuration) and call
-`authenticate` on it to receive your access_token.
+`token` on it to receive your access_token.
 
 ```ruby
-AccessTokenAgent::Connector.instance.authenticate
+AccessTokenAgent::Connector.instance.token
  => "XYZ"
 ```
 
-When no valid AccessToken is present a call to authenticate returns one of the
+When no valid AccessToken is present a call to token returns one of the
 following:
  - a Bearer Token if the credentials are valid (auth response code 200)
  - raises an UnauthorizedError if the credentials are invalid (auth response
    code 401)
  - raises an Error if the auth response code is neither 200 nor 401
 
-As long as a valid AccessToken is present a call to authenticate simply returns
+As long as a valid AccessToken is present a call to token simply returns
 that AccessToken. An AccessToken is valid for a limited time. The exact value is
 determined by the auth response which contains an `expires_at` parameter.
 
