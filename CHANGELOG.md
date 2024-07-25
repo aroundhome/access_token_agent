@@ -1,8 +1,12 @@
-## 3.5.2 (2024-06-12)
+## 4.0.0 (2024-07-25)
+
+- BREAKING: Remove deprecated `authenticate` method, use `token` instead
+
+## 3.5.2 (2024-06-12) yanked
 
 - Use the new default branch (`main`, replacing `master`) in the publish job.
 
-## 3.5.1 (2023-05-24)
+## 3.5.1 (2023-05-24) yanked
 
 - Publish gem to the new gem server
 

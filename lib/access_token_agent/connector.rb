@@ -33,12 +33,6 @@ module AccessTokenAgent
       @known_token.value
     end
 
-    def authenticate
-      warn "[DEPRECATION] `#{self.class}.authenticate` is deprecated. " \
-           'Use `token` instead.'
-      token
-    end
-
     private
 
     def fetch_token
