@@ -28,8 +28,8 @@ module AccessTokenAgent
 
     def token
       return FAKE_TOKEN if @fake_auth
-      @known_token = fetch_token unless @known_token && @known_token.valid?
 
+      @known_token = fetch_token unless @known_token&.valid?
       @known_token.value
     end
 

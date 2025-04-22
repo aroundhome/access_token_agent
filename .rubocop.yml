@@ -1,3 +1,5 @@
+plugins: rubocop-performance
+
 AllCops:
   Exclude:
     - 'bin/**/*'
@@ -31,6 +33,9 @@ Metrics/ParameterLists:
   CountKeywordArgs: false
 
 Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
   Enabled: false
 
 # This cop tries to make you use module_funtion instead of extend self
