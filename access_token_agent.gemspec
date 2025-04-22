@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.files       = `git ls-files -z`.split("\x0")
                                    .reject { |f| f.match(%r{^spec/}) }
 
-  s.required_ruby_version = '>= 3.4'
+  s.required_ruby_version = '>= 3.0'
 
   s.add_development_dependency 'bundler', '> 1.11', '< 3'
   s.add_development_dependency 'pry', '~> 0.10'

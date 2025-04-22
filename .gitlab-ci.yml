@@ -11,7 +11,7 @@ before_script:
 
 rubocop:
   stage: test
-  image: public.ecr.aws/docker/library/ruby:2.7
+  image: public.ecr.aws/docker/library/ruby:3.4
   script:
     - bundle exec rubocop
 
@@ -20,21 +20,27 @@ rspec_latest:
   script:
     - bundle exec rspec
 
-rspec_2.6:
+rspec_3.4:
   stage: test
-  image: public.ecr.aws/docker/library/ruby:2.6
+  image: public.ecr.aws/docker/library/ruby:3.4
   script:
     - bundle exec rspec
 
-rspec_2.5:
+rspec_3.3:
   stage: test
-  image: public.ecr.aws/docker/library/ruby:2.5
+  image: public.ecr.aws/docker/library/ruby:3.3
   script:
     - bundle exec rspec
 
-rspec_2.2:
+rspec_3.3:
   stage: test
-  image: ruby:2.2
+  image: public.ecr.aws/docker/library/ruby:3.2
+  script:
+    - bundle exec rspec
+
+rspec_3.1:
+  stage: test
+  image: public.ecr.aws/docker/library/ruby:3.1
   script:
     - bundle exec rspec
 
