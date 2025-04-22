@@ -91,7 +91,7 @@ describe AccessTokenAgent::Connector do
     end
 
     it 'uses the token as Bearer token' do
-      expect(subject['Authorization']).to eql 'Bearer ' + token
+      expect(subject['Authorization']).to eql "Bearer #{token}"
     end
   end
 
@@ -173,7 +173,7 @@ describe AccessTokenAgent::Connector do
     end
 
     context 'when using scopes' do
-      let(:scopes) { ['scope-a', 'scope-b'] }
+      let(:scopes) { %w[scope-a scope-b] }
       let(:options) do
         {
           host: host,
