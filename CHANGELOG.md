@@ -1,3 +1,7 @@
+## 4.0.1 (2025-04-22)
+
+- Update rubocop version and support ruby 3
+
 ## 4.0.0 (2024-07-25)
 
 - BREAKING: Remove deprecated `authenticate` method, use `token` instead
