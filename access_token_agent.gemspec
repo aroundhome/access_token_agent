@@ -19,11 +19,11 @@ Gem::Specification.new do |s|
   s.required_ruby_version = '>= 3.0'
 
   s.add_development_dependency 'bundler', '> 1.11', '< 3'
-  s.add_development_dependency 'pry', '~> 0.10'
-  s.add_development_dependency 'rspec', '~> 3.4'
+  s.add_development_dependency 'pry', '~> 0.15'
+  s.add_development_dependency 'rspec', '~> 3.13'
   s.add_development_dependency 'rubocop', '~> 1.75'
   s.add_development_dependency 'rubocop-performance', '~> 1.25'
-  s.add_development_dependency 'simplecov', '~> 0.16'
+  s.add_development_dependency 'simplecov', '~> 0.22'
   s.add_development_dependency 'vcr', '~> 6.3'
   s.add_development_dependency 'webmock', '~> 3'
 end
